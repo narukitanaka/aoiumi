@@ -1,0 +1,160 @@
+<div id="main" class="sub_container">
+  <!-- メインビジュアル -->
+  <div class="p-sub_mv">
+    <picture>
+      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/products_mv_sp.png" media="(max-width: 767.98px)" class="sp_img">
+      <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_mv.png" alt="">
+    </picture>
+    <div class="obj-leaf01"><img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/shadow_leaf01.png" alt=""></div>
+  </div><!-- /.p-sub_mv -->
+
+
+  <section class="products_inner">
+    <section class="products_category">
+      <div class="inner">
+        <div class="category">
+
+          <ul>
+            <!-- <li class="thumn-box">
+              <a href="#">
+                <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-top_category-img01.jpg" alt="">
+                <div class="cate-name">
+                  <p>やむちん</p>
+                </div>
+              </a>
+            </li> -->
+            <li class="thumn-box">
+              <a href="{{ '/collections/ryukyuglass' }}">
+                <picture>
+                  <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-top_category-img02.jpg" media="(max-width: 769px)" class="sp_img">
+                  <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_category-img02.jpg" alt="">
+                </picture>
+
+                <div class="cate-name">
+                  <p>琉球ガラス</p>
+                </div>
+              </a>
+            </li>
+            <li class="thumn-box">
+              <a href="{{ '/collections/salt-goods' }}">
+                <picture>
+                  <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-top_category-img03.jpg" media="(max-width: 769px)" class="sp_img">
+                  <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_category-img03.jpg" alt="">
+                </picture>
+                <div class="cate-name">
+                  <p>塩 /<br>塩関連食品</p>
+                </div>
+              </a>
+            </li>
+            <li class="thumn-box">
+              <a href="{{ '/collections/craft' }}">
+                <picture>
+                  <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-top_category-img04.jpg" media="(max-width: 769px)" class="sp_img">
+                  <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_category-img04.jpg" alt="">
+                </picture>
+                <div class="cate-name">
+                  <p>工芸品/<br>アパレル</p>
+                </div>
+              </a>
+            </li>
+            <li class="thumn-box">
+              <a href="{{ '/collections/foods' }}">
+                <picture>
+                  <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-top_category-img05.jpg" media="(max-width: 769px)" class="sp_img">
+                  <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_category-img05.jpg" alt="">
+                </picture>
+                <div class="cate-name">
+                  <p>お菓子類/<br>飲みもの</p>
+                </div>
+              </a>
+            </li>
+            <li class="thumn-box">
+              <a href="{{ '/collections/others' }}">
+                <picture>
+                  <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-top_category-img06.jpg" media="(max-width: 769px)" class="sp_img">
+                  <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_category-img06.jpg" alt="">
+                </picture>
+                <div class="cate-name">
+                  <p>その他</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div><!-- /.category -->
+      </div><!-- /.inner -->
+    </section><!-- /.products_category -->
+
+    <div class="inner">
+      {% if cart.attributes.pagination != blank %}
+        {%- assign limit = cart.attributes.pagination %}
+      {% else %}
+        {% assign limit = 15 -%}
+      {% endif %}
+      {% paginate collection.products by limit %}
+
+        <!-- 並び順 -->
+        <div class="p-order-content">
+          <p>全{{ paginate.items }}件</p>
+          <ul>
+            <li class="u-pc">並び順：</li>
+            <li>
+              <a href="{{ product.url }}?sort_by=best-selling" data-sort-by="best-selling">おすすめ順</a>
+            </li>
+            <li>
+              <a href="{{ product.url }}?sort_by=created-descending" data-sort-by="created-descending">新着順</a>
+            </li>
+            <li>
+              <a href="{{ product.url }}?sort_by=price-ascending" data-sort-by="price-ascending">価格が安い順</a>
+            </li>
+            <li>
+              <a href="{{ product.url }}?sort_by=price-descending" data-sort-by="price-descending">価格が高い順</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-proucts_list">
+          <ul>
+
+            {% for product in collection.products %}
+              <li>
+                <a href="{{ product.url }}">
+                  <div class="thumn-box obj-fit">
+                    <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.title }}">
+                  </div>
+                  <div class="cate">
+                    {% if product.collections.size > 0 %}
+                      <p>{{ product.collections.first.title }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="item-name">
+                    <p>{{ product.title }}</p>
+                  </div>
+                  <div class="price">
+                    <p>{{ product.price | money_with_currency }}<span>（税込）</span></p>
+                  </div>
+                </a>
+              </li>
+            {% endfor %}
+
+          </ul>
+        </div>
+        {% if paginate.pages > 1 %}
+          {% render "pagination", paginate: paginate %}
+        {% endif %}
+      {% endpaginate %}
+    </div><!-- /.inner -->
+  </section>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "products",
+    "presets": [
+      {
+        "name": "products"
+      }
+    ]
+  }
+{% endschema %}

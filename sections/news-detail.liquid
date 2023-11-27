@@ -1,0 +1,123 @@
+
+<div id="main" class="sub_container news_container">
+  <!-- メインビジュアル -->
+  <div class="p-sub_mv">
+    {% comment %} <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-news-detail_mv.jpg" alt=""> {% endcomment %}
+    <img src="{{ article.image.src | img_url: '300x300' }}" alt="{{ article.image.alt }}">
+    <!-- <picture>
+      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/sub/news-detail_mv_sp.jpg" media="(max-width: 767.98px)" class="sp_img">
+      <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/sub/p-news-detail_mv.jpg" alt="">
+    </picture> -->
+  </div><!-- /.p-sub_mv -->
+  <section class="news-detail_inner">
+    <div class="inner">
+      <div class="news-details_wrap">
+        <div class="news_head-ttl">
+          <div class="news_head-info">
+            <p class="time">{{ article.created_at | date: '%Y.%m.%d' }}</p>
+            <p class="cate-name">{{ article.tags | join: ', ' }}</p>
+          </div>
+
+          <h1>{{ article.title }}</h1>
+
+        </div>
+        <div class="news-details_content">
+        {{ article.content }}
+        </div>
+      </div><!-- /.news-list_wrap -->
+
+
+      <!-- この記事で紹介した商品 -->
+      {%- assign metafields-products = article.metafields.custom._related-product -%}
+      {%- if metafields-products != blank -%}
+        <div class="p-proucts_list">
+          <p class="article_product">この記事で紹介した商品</p>
+          <ul>
+            {%- for product in metafields-products.value -%}
+              <li>
+                <a href="{{ product.url }}">
+                  <div class="thumn-box obj-fit">
+                    <img src="{{ product.featured_image | img_url: 'master' }}" alt="">
+                  </div>
+                  <div class="cate">
+                    {% if product.collections.size > 0 %}
+                      <p>{{ product.collections.first.title }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="item-name">
+                    <p>{{ product.title }}</p>
+                  </div>
+                  <div class="price">
+                    <p>{{ product.price | money_with_currency }}<span>（税込）</span></p>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div><!-- /.proucts_list -->
+      {%- endif -%}
+
+
+    </div><!-- /.inner -->
+    <div class="article_inner">
+      <!-- ページネーション -->
+      <div class="article_pager">
+        <nav class="p-pager">
+          <ul class="p-pager__list">
+            <li class="p-pager__item">
+              {% if blog.previous_article %}
+                <a href="{{ blog.previous_article.url }}" class="p-pager__link">
+                  <span class="prev">前の記事</span>
+                  <div class="thumn-box obj-fit">
+                    <img src="{{ blog.previous_article.image.src | img_url: '300x300' }}" alt="{{ article.image.alt }}">
+                  </div>
+                  <div class="news_head-info">
+                    <p class="time">{{ blog.previous_article.created_at | date: '%Y.%m.%d' }}</p>
+                    <p class="cate-name">{{ blog.previous_article.tags | join: ', ' }}</p>
+                  </div>
+                  <div class="news-name">
+                    <p>{{ blog.previous_article.title }}</p>
+                  </div>
+                </a>
+              {% endif %}
+            </li>
+            <li class="p-pager__item">
+              {% if blog.next_article %}
+                <a href="{{ blog.next_article.url }}" class="p-pager__link">
+                  <span class="next">次の記事</span>
+                  <div class="thumn-box obj-fit">
+                    <img src="{{ blog.next_article.image.src | img_url: '300x300' }}" alt="{{ article.image.alt }}">
+                  </div>
+                  <div class="news_head-info">
+                    <p class="time">{{ blog.next_article.created_at | date: '%Y.%m.%d' }}</p>
+                    <p class="cate-name">{{ blog.next_article.tags | join: ', ' }}</p>
+                  </div>
+                  <div class="news-name">
+                    <p>{{ blog.next_article.title }}</p>
+                  </div>
+                </a>
+              {% endif %}
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <!-- ページネーションここまで -->
+    </div>
+
+
+  </section>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "news-detail",
+    "presets": [
+      {
+        "name": "news-detail"
+      }
+    ]
+  }
+{% endschema %}

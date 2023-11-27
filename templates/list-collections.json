@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "disabled": true,
+      "settings": {
+        "title": "Collections",
+        "sort": "alphabetical",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "columns_mobile": "2"
+      }
+    },
+    "501970ce-33bf-4f0b-aba0-9ab4c05b75e4": {
+      "type": "products",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "501970ce-33bf-4f0b-aba0-9ab4c05b75e4"
+  ]
+}

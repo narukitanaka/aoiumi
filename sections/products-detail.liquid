@@ -1,0 +1,171 @@
+<div id="main" class="sub_container">
+  <section class="products-detail_inner">
+    <div class="obj-leaf01"><img src="./https://cdn.shopify.com/s/files/1/0555/2485/1798/files/shadow_leaf01.png" alt=""></div>
+    <div class="inner">
+      <!-- メインコンテンツ -->
+      <section class="p-item_wrap">
+
+        <div class="p-merchandise-detail">
+          <div class="p-merchandise__img-content">
+            <!-- パンくずリスト -->
+            <div class="breadcrumb">
+              <nav>
+                <ol>
+                  <li><a href="index.html"><img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/icon-home.svg" alt=""></a></li>
+                  {% comment %} {% for collection in product.collections %}
+                    {% assign excluded_collections = 'all' | split: ',' %}
+                    {% unless excluded_collections contains collection.handle %}
+                      <li>
+                        <a href="{{ collection.url }}">{{ collection.title }}</a>
+                      </li>
+                    {% endunless %}
+                  {% endfor %} {% endcomment %}
+                  {% assign excluded_collections = 'all' | split: ',' %}
+                  {% assign matched_collections = '' %}
+
+                  {% for collection in product.collections %}
+                    {% unless excluded_collections contains collection.handle %}
+                      {% assign matched_collections = matched_collections | append: '<a href="' | append: collection.url | append: '">' | append: collection.title | append: '</a>, ' %}
+                    {% endunless %}
+                  {% endfor %}
+
+                  {% if matched_collections != '' %}
+                    <li>
+                      {{ matched_collections | remove_last: ', ' }}
+                    </li>
+                  {% endif %}
+
+
+                  <li>{{ product.title }}</li>
+                </ol>
+              </nav>
+            </div>
+
+            <div class="p-merchandise__img-wrapper">
+              <div class="swiper03">
+                <div class="swiper-wrapper">
+                  {% for image in product.images %}
+                    <div class="swiper-slide">
+                      <div class="p-img-wrapper">
+                        <img src="{{ image.src | img_url: 'master' }}" alt="">
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div><!-- /.swiper03 -->
+              <div class="thumb-list">
+                {% for image in product.images %}
+                  <div class="thumb-item">
+                    <a class="thumb-link"
+                      href="javascript:void(0);"
+                      onclick="thumbnail({{ forloop.index }})">
+                      <img src="{{ image.src | img_url: 'master' }}" alt="">
+                    </a>
+                  </div>
+                {%- endfor -%}
+              </div><!-- /.thumb-list -->
+            </div><!-- /.p-merchandise__img-wrapper -->
+
+          </div><!-- /.left -->
+          <div class="p-merchandise__detail-content">
+            <h1 class="c-merchandise__name">{{ product.title }}</h1>
+            {% if product.compare_at_price_max and product.compare_at_price_max > product.price %}
+            <p class="c-price">{{ product.compare_at_price_max | money_with_currency }}<span>（税込）</span>
+            </p>
+            <p class="c-price" style="color: #f00;">割引価格：{{ product.price | money_with_currency }}<span>（税込）</span>
+            </p>
+          {% else %}
+            <p class="c-price">{{ product.price | money_with_currency }}<span>（税込）</span>
+            </p>
+          {% endif %}
+            {% comment %} <p class="c-price"><span>¥</span>1,234<span>（税込）</span></p> {% endcomment %}
+            <div class="p-txt-block">
+              <p class="p-block__ttl">【商品説明】</p>
+              <p class="p-block__text">{{ product.content }}</p>
+            </div>
+            <div class="p-count">
+              {% comment %} <form action="post" id="cart_in"> {% endcomment %}
+              <form
+              method="post"
+              action="/cart/add"
+              id="cart_in">
+              <input
+                type="hidden"
+                name="id"
+                value="{{ product.variants[0].id }}" />
+                <div class="count_inner">
+                  <p class="c-ttl">購入数</p>
+                  <div class="product-quantity">
+                    <button type="button" id="minus">ー</button>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                    <button type="button" id="plus">＋</button>
+                  </div>
+                </div>
+                <div class="p-btn-wrapper">
+                  <button type="submit" class="c-btn">カートに入れる</button>
+                </div>
+              </form>
+            </div>
+            <a href="{{ '/pages/contact' }}" class="c-txt-inquiry">この商品について問い合わせる</a>
+            <table class="p-merchandise__infomation">
+              <tr>
+              {% if product.metafields.custom._capacity != empty %}
+                <th>内容量</th>
+                <td>{{ product.metafields.custom._capacity }}</td>
+              {% endif %}
+                {% comment %} <th>内容量</th>
+                <td>xxxxg</td> {% endcomment %}
+              </tr>
+              <tr>
+              {% if product.metafields.custom._bestbefore != empty %}
+                <th>賞味期限</th>
+                <td>{{ product.metafields.custom._bestbefore }}</td>
+              {% endif %}
+                {% comment %} <th>賞味期限</th>
+                <td>製造日より40日（※未開封時）</td> {% endcomment %}
+              </tr>
+              <tr>
+                {% if product.metafields.custom._keep != empty %}
+                  <th>保存方法</th>
+                  <td>{{ product.metafields.custom._keep | newline_to_br }}</td>
+                {% endif %}
+                {% comment %} <th>保存方法</th>
+                <td>直射日光、高温多湿を避けて下さい、開封後は賞味期限にかかわらずお早めにお召し上がりください。</td> {% endcomment %}
+              </tr>
+              <tr>
+                {% if product.metafields.custom._material != empty %}
+                  <th>原材料</th>
+                  <td>{{ product.metafields.custom._material | newline_to_br }}</td>
+                {% endif %}
+                {% comment %} <th>原材料</th>
+                <td>
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </td> {% endcomment %}
+              </tr>
+              <tr>
+                {% if product.metafields.custom._allergen != empty %}
+                  <th>アレルゲン</th>
+                  <td>{{ product.metafields.custom._allergen }}</td>
+                {% endif %}
+                {% comment %} <th>アレルゲン</th>
+                <td>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</td> {% endcomment %}
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section><!-- /.p-item_wrap-->
+    </div><!-- /.inner-->
+  </section>
+</div>
+
+
+{% schema %}
+  {
+    "name": "products-detail",
+    "presets": [
+      {
+        "name": "products-detail"
+      }
+    ]
+  }
+{% endschema %}

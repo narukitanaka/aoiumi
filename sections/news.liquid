@@ -1,0 +1,95 @@
+<div id="main" class="sub_container">
+  <!-- メインビジュアル -->
+  <div class="p-sub_mv">
+    <picture>
+      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/news_mv_sp.png" media="(max-width: 767.98px)" class="sp_img">
+      <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-news_mv.png" alt="">
+    </picture>
+    <div class="obj-leaf01"><img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/shadow_leaf01.png" alt=""></div>
+  </div><!-- /.p-sub_mv -->
+
+
+  <section class="news_inner">
+    <div class="inner">
+      <p class="u-sp">カテゴリ<p>
+      <div class="p-order-content">
+        <ul>
+          <li class="u-pc">カテゴリ</li>
+          {% if current_tags %}
+            <li><a href="{{ '/blogs/news' }}">全て</a></li>
+          {% endif %}
+
+        {% for tag in blogs[handle].all_tags %}
+          <li>
+            {% if current_tags and tag == current_tags.first %}
+              <a href="{{ shop.url }}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" class="selected-tag">{{ tag }}</a>
+            {% else %}
+              <a href="{{ shop.url }}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+            {% endif %}
+
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    {%- paginate blog.articles by 9 -%}
+      <div class="p-news_wrap">
+        <ul>
+          {% if current_tags %}
+            {%- for article in blog.articles -%}
+              {% if article.tags contains current_tags.first %}
+                <li>
+                  <a href="{{ article.url }}">
+                    <div class="thumn-box obj-fit">
+                      <img src="{{ article.image.src | img_url: '300x300' }}" alt="{{ article.image.alt }}">
+                    </div>
+                    <div class="cate">
+                      <p>{{ article.tags | join: ', ' }}</p>
+                    </div>
+                    <div class="news-name">
+                      <p>{{ article.title }}</p>
+                    </div>
+                  </a>
+                </li>
+              {% endif %}
+            {%- endfor -%}
+          {% else %}
+            {%- for article in blog.articles -%}
+              <li>
+                <a href="{{ article.url }}">
+                  <div class="thumn-box obj-fit">
+                    <img src="{{ article.image.src | img_url: '300x300' }}" alt="{{ article.image.alt }}">
+                  </div>
+                  <div class="cate">
+                    <p>{{ article.tags | join: ', ' }}</p>
+                  </div>
+                  <div class="news-name">
+                    <p>{{ article.title }}</p>
+                  </div>
+                </a>
+              </li>
+            {%- endfor -%}
+          {% endif %}
+        </ul>
+      </div><!-- /.p-news_wrap -->
+        <!-- ページネーション -->
+        {% if paginate.pages > 1 %}
+          {% render "pagination", paginate: paginate %}
+        {% endif %}
+        <!-- ページネーションここまで -->
+    {%- endpaginate -%}
+    </div><!-- /.inner -->
+  </section>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "news",
+    "presets": [
+      {
+        "name": "news"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,35 @@
+<div id="main" class="sub_container">
+  <!-- メインビジュアル -->
+  <div class="p-sub_mv">
+    <picture>
+      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/contact_mv_sp.png" media="(max-width: 767.98px)" class="sp_img">
+      <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-contact_mv.png" alt="CONTACT お問い合わせ">
+    </picture>
+    <div class="obj-leaf01"><img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/shadow_leaf01.png" alt=""></div>
+  </div><!-- /.p-sub_mv -->
+
+
+  <section class="contact_inner">
+    <div class="inner">
+      <div class="contact-message txt_box">
+        <p>
+          お問い合わせは、下記お電話またはメールフォームにて承ります。<br>
+          また、お客さまからよく寄せられる質問とその回答を、<br class="only-md"><a href="{{ '/pages/faq' }}"
+            target="_blank">「よくある質問」</a>ページにまとめておりますので、ぜひご覧ください。
+        </p>
+      </div>
+
+      <div class="contact_tel-num">
+        <h3>お電話から</h3>
+        <div>
+          <a href="tel:098-958-3940">098-958-3940</a>
+        </div>
+        <p>営業時間｜10:00~18:00（電話受付時間）</p>
+      </div>
+        <h3 class="medium_ttl">メールフォームから</h3>
+        <div class="form_wrap">
+          {% section 'contact-form' %}
+        </div>
+    </div><!-- /.inner -->
+  </section>
+</div>

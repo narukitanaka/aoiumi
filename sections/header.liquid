@@ -1,0 +1,75 @@
+
+{% if template == 'index' %}
+  <header>
+{% else %}
+  <header class="glass_effect">
+{% endif %}
+
+  <div class="header_inner">
+    <div class="logo">
+      <a href="{{ routes.root_url }}">
+        <div class="img-box"></div>
+      </a>
+    </div>
+    <div class="header-menu">
+      <ul class="menu">
+        <li><a href="{{ '/pages/about' }}">Gala 青い海について</a></li>
+        <li><a href="{{ '/collections/all' }}">商品一覧</a></li>
+        <li><a href="{{ '/blogs/news' }}">特集一覧</a></li>
+        <li><a href="{{ '/pages/faq' }}">よくある質問</a></li>
+      </ul>
+      <div class="header_icon_serch">
+        <a href="#"></a>
+      </div>
+
+      <div class="header_search-content">
+        <form method="get" action="/search">
+          <div class="header_search-inner">
+            <input type="text" name="q" placeholder="商品を検索">
+            <input type="image" src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/icon-serch02.svg" alt="検索" class="icn-search">
+          </div>
+        </form>
+      </div>
+      <div class="header_icon_login">
+        <a href="{{ '/account/login' }}"></a>
+      </div>
+      <div class="header_icon_cart">
+        <a href="{{ '/cart' }}"></a>
+      </div>
+    </div><!-- /.header-menu -->
+  </div><!-- /.header_inner-->
+
+  <div class="sp_menu_inner">
+    <div class="hamburger">
+      <div class="ham-trigger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="sp_openarea">
+      <ul class="sp_menu-list">
+        <li><a href="{{ routes.root_url }}">TOP</a></li>
+        <li><a href="{{ '/pages/about' }}">Gala 青い海について</a></li>
+        <li><a href="{{ '/collections/all' }}">商品一覧</a></li>
+        <li><a href="{{ '/blogs/news' }}">特集一覧</a></li>
+        <li><a href="{{ '/pages/faq' }}">よくある質問</a></li>
+        <li><a href="{{ '/pages/contact' }}">お問い合わせ</a></li>
+      </ul>
+
+      <ul class="sp_menu-sublist">
+        <li><a href="{{ '/pages/policy' }}">プライバシーポリシー</a></li>
+        <li><a href="{{ '/pages/terms' }}">特定商取引法に基づく表記</a></li>
+        <li><a href="{{ '/pages/company' }}">会社概要</a></li>
+        <li><a href="https://www.aoiumi.co.jp/" target="_blank" rel="noopener" class="tab">株式会社&nbsp;青い海</a></li>
+      </ul>
+
+      <div class="sp_login">
+        <a href="{{ '/account/login' }}">
+          ログイン
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
