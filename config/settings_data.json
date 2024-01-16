@@ -1,6 +1,7 @@
 {
   "current": {
     "logo_width": 90,
+    "favicon": "shopify:\/\/shop_images\/Favicon.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -127,6 +128,22 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "background-1"
+        }
+      },
+      "lineup-tastyset": {
+        "type": "lineup-tastyset",
+        "blocks": {
+          "0dcbb607-8f7a-4371-9d55-b1fe8929a4c0": {
+            "type": "used_product_block",
+            "settings": {
+              "used_product": "定番-もとぶ牧場ハンバーグ缶-青い海塩3点セット"
+            }
+          }
+        },
+        "block_order": [
+          "0dcbb607-8f7a-4371-9d55-b1fe8929a4c0"
+        ],
+        "settings": {
         }
       }
     },

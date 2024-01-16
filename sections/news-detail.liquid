@@ -2,12 +2,7 @@
 <div id="main" class="sub_container news_container">
   <!-- メインビジュアル -->
   <div class="p-sub_mv">
-    {% comment %} <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-news-detail_mv.jpg" alt=""> {% endcomment %}
-    <img src="{{ article.image.src | img_url: '300x300' }}" alt="{{ article.image.alt }}">
-    <!-- <picture>
-      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/sub/news-detail_mv_sp.jpg" media="(max-width: 767.98px)" class="sp_img">
-      <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/sub/p-news-detail_mv.jpg" alt="">
-    </picture> -->
+    <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.image.alt }}">
   </div><!-- /.p-sub_mv -->
   <section class="news-detail_inner">
     <div class="inner">

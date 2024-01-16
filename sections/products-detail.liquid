@@ -20,7 +20,7 @@
                       </li>
                     {% endunless %}
                   {% endfor %} {% endcomment %}
-                  {% assign excluded_collections = 'all' | split: ',' %}
+                  {% assign excluded_collections = 'all,reducedtax' | split: ',' %}
                   {% assign matched_collections = '' %}
 
                   {% for collection in product.collections %}
@@ -78,13 +78,11 @@
             <p class="c-price">{{ product.price | money_with_currency }}<span>（税込）</span>
             </p>
           {% endif %}
-            {% comment %} <p class="c-price"><span>¥</span>1,234<span>（税込）</span></p> {% endcomment %}
             <div class="p-txt-block">
               <p class="p-block__ttl">【商品説明】</p>
               <p class="p-block__text">{{ product.content }}</p>
             </div>
             <div class="p-count">
-              {% comment %} <form action="post" id="cart_in"> {% endcomment %}
               <form
               method="post"
               action="/cart/add"
@@ -109,46 +107,34 @@
             <a href="{{ '/pages/contact' }}" class="c-txt-inquiry">この商品について問い合わせる</a>
             <table class="p-merchandise__infomation">
               <tr>
-              {% if product.metafields.custom._capacity != empty %}
+              {% if product.metafields.custom._capacity != blank %}
                 <th>内容量</th>
                 <td>{{ product.metafields.custom._capacity }}</td>
               {% endif %}
-                {% comment %} <th>内容量</th>
-                <td>xxxxg</td> {% endcomment %}
               </tr>
               <tr>
-              {% if product.metafields.custom._bestbefore != empty %}
+              {% if product.metafields.custom._bestbefore != blank %}
                 <th>賞味期限</th>
                 <td>{{ product.metafields.custom._bestbefore }}</td>
               {% endif %}
-                {% comment %} <th>賞味期限</th>
-                <td>製造日より40日（※未開封時）</td> {% endcomment %}
               </tr>
               <tr>
-                {% if product.metafields.custom._keep != empty %}
+                {% if product.metafields.custom._keep != blank %}
                   <th>保存方法</th>
                   <td>{{ product.metafields.custom._keep | newline_to_br }}</td>
                 {% endif %}
-                {% comment %} <th>保存方法</th>
-                <td>直射日光、高温多湿を避けて下さい、開封後は賞味期限にかかわらずお早めにお召し上がりください。</td> {% endcomment %}
               </tr>
               <tr>
-                {% if product.metafields.custom._material != empty %}
+                {% if product.metafields.custom._material != blank %}
                   <th>原材料</th>
                   <td>{{ product.metafields.custom._material | newline_to_br }}</td>
                 {% endif %}
-                {% comment %} <th>原材料</th>
-                <td>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-                </td> {% endcomment %}
               </tr>
               <tr>
-                {% if product.metafields.custom._allergen != empty %}
+                {% if product.metafields.custom._allergen != blank %}
                   <th>アレルゲン</th>
                   <td>{{ product.metafields.custom._allergen }}</td>
                 {% endif %}
-                {% comment %} <th>アレルゲン</th>
-                <td>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</td> {% endcomment %}
               </tr>
             </table>
           </div>

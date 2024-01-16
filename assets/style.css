@@ -236,7 +236,7 @@ input[type=button]:focus {
   position: relative;
 }
 .glass_effect .logo::after {
-  content: "5,000円以上で送料無料";
+  content: "10,000円以上で送料無料";
   color: #1C5497;
   border: 1px solid #1C5497;
 }
@@ -304,7 +304,7 @@ input[type=button]:focus {
   top: 1.8rem;
 }
 .glass_effect.open_active .logo::after {
-  content: "5,000円以上で送料無料";
+  content: "10,000円以上で送料無料";
   transition: all 0.2s;
   background: #1C5497;
   border: 1px solid #1C5497;
@@ -581,7 +581,7 @@ header .logo {
   position: relative;
 }
 header .logo::after {
-  content: "5,000円以上で送料無料";
+  content: "10,000円以上で送料無料";
   font-size: 1.4rem;
   font-weight: 500;
   padding: 0.6rem 1.4rem;
@@ -606,7 +606,7 @@ header .logo::after {
     bottom: -4rem;
     top: auto;
     transform: translateY(0);
-    width: 15rem;
+    width: 16rem;
   }
 }
 header .logo p {
@@ -997,7 +997,7 @@ spメニューレイアウト
 }
 @media screen and (max-width: 599px) {
   .open_active .logo::after {
-    content: "5,000円以上で送料無料";
+    content: "10,000円以上で送料無料";
     transition: all 0.2s;
     background: #1C5497;
     border: 1px solid #1C5497;
@@ -1655,7 +1655,7 @@ top
 .p-top_wrap02 .loop-slider .slie-btn_area,
 .p-top_wrap02 .pickup-slider .slie-btn_area {
   position: absolute;
-  bottom: 0rem;
+  bottom: -7rem;
   right: 0%;
   display: flex;
   gap: 3rem;
@@ -2011,6 +2011,7 @@ top
 }
 .p-top_wrap04 .ranking ul li .item-name p {
   font-size: 1.5rem;
+  white-space: initial;
 }
 .p-top_wrap04 .ranking ul li .price p span {
   font-size: 1.2rem;
@@ -2951,6 +2952,8 @@ Craft Collection
     margin: 5rem auto;
     width: 100%;
     height: 8.4rem;
+    position: relative;
+    z-index: 3;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -3140,8 +3143,17 @@ Craft Collection
     padding: 8rem 0 0;
   }
 }
+.accesary .inner:after {
+  top: 1.7rem;
+}
+@media screen and (max-width: 1024px) {
+  .accesary .inner:after {
+    top: 1.5rem;
+  }
+}
 .accesary .en-ttl {
-  max-width: 15.4rem;
+  max-width: 10.7rem;
+  margin-bottom: 0.6rem;
 }
 @media screen and (max-width: 599px) {
   .accesary .en-ttl {
@@ -4646,10 +4658,10 @@ details.is-opened summary::after {
     margin-bottom: 2rem;
   }
 }
-.news-details_content p img {
+.news-details_content img {
+  display: block;
   border: 1px solid #444;
   border-radius: 0;
-  text-align: center;
   -o-object-fit: contain;
      object-fit: contain;
   max-width: 60rem;
@@ -4978,6 +4990,25 @@ details.is-opened summary::after {
 #MainContent .customer button:hover {
   background-color: #F5FCFE;
   border: 1px solid #1C5497;
+}
+
+/*************************************************
+商品一覧
+*************************************************/
+.p-products_mv p {
+  position: absolute;
+  top: 24.1666666667vw;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 2rem;
+  color: #1C5497;
+}
+@media screen and (max-width: 599px) {
+  .p-products_mv p {
+    font-size: 1.6rem;
+    top: 61.8666666667vw;
+  }
 }
 
 /**

@@ -1,11 +1,26 @@
 <div id="main" class="sub_container">
   <!-- メインビジュアル -->
-  <div class="p-sub_mv">
+  <div class="p-sub_mv p-products_mv">
     <picture>
-      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/products_mv_sp.png" media="(max-width: 767.98px)" class="sp_img">
+      <source srcset="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_mv_sp.png" media="(max-width: 767.98px)" class="sp_img">
       <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/p-products_mv.png" alt="">
     </picture>
     <div class="obj-leaf01"><img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/shadow_leaf01.png" alt=""></div>
+    {% if collection.handle == 'all' %}
+      <p>商品一覧-全て</p>
+    {% elsif collection.handle == 'yatimun' %}
+      <p>やちむん</p>
+    {% elsif collection.handle == 'ryukyuglass' %}
+      <p>琉球ガラス</p>
+    {% elsif collection.handle == 'salt-goods' %}
+      <p>塩/塩関連商品</p>
+    {% elsif collection.handle == 'craft' %}
+      <p>工芸品/アパレル</p>
+    {% elsif collection.handle == 'foods' %}
+      <p>お菓子類/飲み物</p>
+    {% elsif collection.handle == 'others' %}
+      <p>その他</p>
+    {% endif %}
   </div><!-- /.p-sub_mv -->
 
 

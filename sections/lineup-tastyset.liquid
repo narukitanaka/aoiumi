@@ -1,0 +1,58 @@
+<section class="line-up_wrap">
+  <div class="inner">
+    <div class="p-proucts_list">
+      <div class="ttl">
+        <div class="en-ttl">
+          <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/lineUp-ttl.png" alt="LINEUP">
+        </div>
+        <h3 class="medium_ttl">商品ラインナップ</h3>
+      </div>
+      <ul>
+        {% for block in section.blocks %}
+          {% if block.settings.used_product != blank %}
+            {% assign product = block.settings.used_product %}
+            <li>
+              <a href="{{ product.url }}">
+                <div class="thumn-box obj-fit">
+                  <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="">
+                </div>
+                <div class="cate">
+                  {% for collection in product.collections %}
+                    <p>{{ collection.title }}</p>
+                  {% endfor %}
+                </div>
+                <div class="item-name">
+                  <p>{{ product.title }}</p>
+                </div>
+                <div class="price">
+                  <p>{{ product.price | money }}<span>（税込）</span></p>
+                </div>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div><!-- /.proucts_list -->
+  </div><!-- /.inner -->
+</section><!-- /.craft_collection -->
+
+
+
+{% schema %}
+  {
+    "name": "LP商品ラインナップ",
+    "blocks": [
+      {
+        "type": "used_product_block",
+        "name": "商品ブロック",
+        "settings": [
+          {
+            "type": "product",
+            "id": "used_product",
+            "label": "商品を選択"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

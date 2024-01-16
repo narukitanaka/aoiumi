@@ -90,101 +90,6 @@
     </div><!-- /.picup -->
   </div><!-- /.inner -->
   <div class="obj-leaf01"><img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/shadow_leaf01.png" alt=""></div>
-  {% comment %} <div class="pickup-slider swiper02 fadeIn">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <a href="#">
-          <div class="thumn-box obj-fit">
-            <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/dummy-img01.jpg" alt="">
-          </div>
-          <div class="cate">
-            <p>作品紹介</p>
-          </div>
-          <div class="ttl">
-            <p>特集タイトルが入ります。</p>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="#">
-          <div class="thumn-box obj-fit">
-            <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/dummy-img02.jpg" alt="">
-          </div>
-          <div class="cate">
-            <p>作品紹介</p>
-          </div>
-          <div class="ttl">
-            <p>特集タイトルが入ります。</p>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="#">
-          <div class="thumn-box obj-fit">
-            <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/dummy-img03.jpg" alt="">
-          </div>
-          <div class="cate">
-            <p>作品紹介</p>
-          </div>
-          <div class="ttl">
-            <p>特集タイトルが入ります。</p>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="#">
-          <div class="thumn-box obj-fit">
-            <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/dummy-img01.jpg" alt="">
-          </div>
-          <div class="cate">
-            <p>作品紹介</p>
-          </div>
-          <div class="ttl">
-            <p>特集タイトルが入ります。</p>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="#">
-          <div class="thumn-box obj-fit">
-            <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/dummy-img02.jpg" alt="">
-          </div>
-          <div class="cate">
-            <p>作品紹介</p>
-          </div>
-          <div class="ttl">
-            <p>特集タイトルが入ります。</p>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="#">
-          <div class="thumn-box obj-fit">
-            <img src="https://cdn.shopify.com/s/files/1/0555/2485/1798/files/dummy-img03.jpg" alt="">
-          </div>
-          <div class="cate">
-            <p>作品紹介</p>
-          </div>
-          <div class="ttl">
-            <p>特集タイトルが入ります。</p>
-          </div>
-        </a>
-      </div>
-    </div><!-- /.swiper-wrapper -->
-    <div class="slie-btn_area slieBtn01 fadeIn">
-      <div class="to-all"><a href="#">View All</a></div>
-      <div class="swiper-prev"></div>
-      <div class="swiper-next"></div>
-    </div>
-
-    <div class="slie-btn_area slieBtn02 fadeIn">
-      <div class="swiper-prev"></div>
-      <div class="to-all"><a href="#">View All</a></div>
-      <div class="swiper-next"></div>
-    </div>
-  </div><!-- /.swiper02 -->  {% endcomment %}
-
-
 
   <div class="pickup-slider swiper02 fadeIn">
     <div class="swiper-wrapper">
@@ -192,7 +97,7 @@
         <div class="swiper-slide">
           <a href="{{ article.url }}">
             <div class="thumn-box obj-fit">
-              <img src="{{ article.image.src | img_url: 'medium' }}" alt="{{ article.image.alt }}">
+              <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.image.alt }}">
             </div>
             <div class="cate">
               <p>{{ article.tags | join: ', ' }}</p>
