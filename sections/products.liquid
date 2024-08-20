@@ -137,8 +137,17 @@
                     <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.title }}">
                   </div>
                   <div class="cate">
-                    {% if product.collections.size > 0 %}
-                      <p>{{ product.collections.first.title }}</p>
+                    {% assign collection_titles = '' %}
+                    {% for collection in product.collections %}
+                      {% unless collection.handle == 'reducedtax' %}
+                        {% if collection_titles != '' %}
+                          {% assign collection_titles = collection_titles | append: ' / ' %}
+                        {% endif %}
+                        {% assign collection_titles = collection_titles | append: collection.title %}
+                      {% endunless %}
+                    {% endfor %}
+                    {% if collection_titles != '' %}
+                      <p>{{ collection_titles }}</p>
                     {% endif %}
                   </div>
                   <div class="item-name">

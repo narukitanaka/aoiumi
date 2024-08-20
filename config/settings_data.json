@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "current": {
     "logo_width": 90,
@@ -133,7 +142,7 @@
       "lineup-tastyset": {
         "type": "lineup-tastyset",
         "blocks": {
-          "0dcbb607-8f7a-4371-9d55-b1fe8929a4c0": {
+          "used_product_block_pkWrwV": {
             "type": "used_product_block",
             "settings": {
               "used_product": "定番-もとぶ牧場ハンバーグ缶-青い海塩3点セット"
@@ -141,7 +150,7 @@
           }
         },
         "block_order": [
-          "0dcbb607-8f7a-4371-9d55-b1fe8929a4c0"
+          "used_product_block_pkWrwV"
         ],
         "settings": {
         }
@@ -150,6 +159,14 @@
     "content_for_index": [
 
     ],
+    "blocks": {
+      "5281749993944428517": {
+        "type": "shopify:\/\/apps\/variant-image-wizard-swatch\/blocks\/app-embed\/66205c03-f474-4e2c-b275-0a2806eeac16",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    },
     "color_schemes": {
       "background-1": {
         "settings": {

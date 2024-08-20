@@ -8,24 +8,32 @@
         <h3 class="medium_ttl">商品ラインナップ</h3>
       </div>
       <ul>
-        {% for block in section.blocks %}
-          {% if block.settings.used_product != blank %}
-            {% assign product = block.settings.used_product %}
+        {% for used_product_block in section.blocks %}
+          {% if used_product_block.type == 'used_product_block' %}
             <li>
-              <a href="{{ product.url }}">
+              <a href="{{ used_product_block.settings.used_product.url }}">
                 <div class="thumn-box obj-fit">
-                  <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="">
+                  <img src="{{ used_product_block.settings.used_product.featured_image.src | img_url: 'master' }}" alt="">
                 </div>
                 <div class="cate">
+                  {% assign collection_titles = '' %}
                   {% for collection in product.collections %}
-                    <p>{{ collection.title }}</p>
+                    {% unless collection.handle == 'reducedtax' %}
+                      {% if collection_titles != '' %}
+                        {% assign collection_titles = collection_titles | append: ' / ' %}
+                      {% endif %}
+                      {% assign collection_titles = collection_titles | append: collection.title %}
+                    {% endunless %}
                   {% endfor %}
+                  {% if collection_titles != '' %}
+                    <p>{{ collection_titles }}</p>
+                  {% endif %}
                 </div>
                 <div class="item-name">
-                  <p>{{ product.title }}</p>
+                  <p>{{ used_product_block.settings.used_product.title }}</p>
                 </div>
                 <div class="price">
-                  <p>{{ product.price | money }}<span>（税込）</span></p>
+                  <p>{{ used_product_block.settings.used_product.price | money }}<span>（税込）</span></p>
                 </div>
               </a>
             </li>
@@ -35,8 +43,6 @@
     </div><!-- /.proucts_list -->
   </div><!-- /.inner -->
 </section><!-- /.craft_collection -->
-
-
 
 {% schema %}
   {
