@@ -1,8 +1,8 @@
 //スクロールフェードイン
 const fadeIn = document.querySelectorAll(".fadeIn");
 const options = {
-  rootMargin: '0px',
-  threshold: 0.6
+  rootMargin: "0px",
+  threshold: 0.6,
 };
 const observer = new IntersectionObserver(showElement, options);
 fadeIn.forEach((fadeIn) => {
@@ -17,12 +17,11 @@ function showElement(entries) {
 }
 
 //各Swiperイベントの初期化
-document.addEventListener('DOMContentLoaded', (event) => {
-
+document.addEventListener("DOMContentLoaded", (event) => {
   //トップMVスライダー
   const swiper = new Swiper(".swiper", {
     loop: true,
-    effect: 'fade',
+    effect: "fade",
     speed: 2000, // ２秒かけながら次の画像へ移動
     autoplay: {
       delay: 4000, // ４秒後に次の画像へ
@@ -31,15 +30,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     allowTouchMove: false, // マウスでのスワイプを禁止
   });
 
-
   // const swiper02 = new Swiper(".swiper02", {
-  //   navigation: { 
-  //     nextEl: ".swiper-next", 
-  //     prevEl: ".swiper-prev", 
+  //   navigation: {
+  //     nextEl: ".swiper-next",
+  //     prevEl: ".swiper-prev",
   //   },
   //   loop: true,
-  //   slidesPerView: 4.5, 
-  //   spaceBetween: 30, 
+  //   slidesPerView: 4.5,
+  //   spaceBetween: 30,
   //   speed: 600, // ２秒かけながら次の画像へ移動
   //   autoplay: {
   //     delay: 2000, // 2秒後に次の画像へ
@@ -48,10 +46,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   //   centeredSlides: true, // 中央配置のスライドを有効にする
   //   initialSlide: 1,     // 2番目のスライドを最初に表示する
   // });
-
-
-
-
 
   // const swiper02 = new Swiper(".swiper02", {
   //   navigation: {
@@ -125,6 +119,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     slidesPerView: 4,
     spaceBetween: 30,
     speed: 600,
+    watchSlidesProgress: true, //これを追加
     autoplay: {
       delay: 2000,
     },
@@ -132,7 +127,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     on: {
       slideChange: function () {
         // すべてのスライドからカスタムクラスを削除
-        this.slides.removeClass('enlarged-slide');
+        this.slides.removeClass("enlarged-slide");
 
         // 外側の左から2番目のスライドにカスタムクラスを適用
         let targetIndex;
@@ -142,9 +137,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
           targetIndex = this.activeIndex;
         }
         if (this.slides[targetIndex]) {
-          this.slides[targetIndex].classList.add('enlarged-slide');
+          this.slides[targetIndex].classList.add("enlarged-slide");
         }
-      }
+      },
     },
     breakpoints: {
       320: {
@@ -162,27 +157,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
         slidesPerView: 4,
         spaceBetween: 20,
         speed: 700,
+        watchSlidesProgress: true, //これを追加
       },
       1920: {
         slidesPerView: 4,
         spaceBetween: 30,
         speed: 600,
       },
-    }
+    },
   });
 
-
   // 初期化時に外側の左から2番目のスライドを拡大
-  swiper02.on('init', function () {
+  swiper02.on("init", function () {
     if (this.slides[1]) {
-      this.slides[1].classList.add('enlarged-slide');
+      this.slides[1].classList.add("enlarged-slide");
     }
   });
   // swiper02.init();
-
-
-
-
 
   // const swiper02 = new Swiper(".swiper02", {
   //   navigation: {
@@ -229,9 +220,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // });
   // swiper02.init();
 
-
-
-
   // aboutページswipe
 
   const sub_swiper = new Swiper(".sub_swiper", {
@@ -268,9 +256,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     },
   });
 
-
-
-
   // collectionページswipe
   const sub_swiper02 = new Swiper(".sub_swiper02", {
     loop: true,
@@ -306,11 +291,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       },
     },
   });
-
-
 });
-
-
 
 // const sub_swiper = new Swiper(".sub_swiper", {
 //   loop: true,
@@ -322,12 +303,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 //   },
 // });
 
-
-
 // headerスクロール処理
-window.addEventListener('scroll', function () {
-  const pTopMv = document.querySelector('.p-top_mv');
-  const header = document.querySelector('header');
+window.addEventListener("scroll", function () {
+  const pTopMv = document.querySelector(".p-top_mv");
+  const header = document.querySelector("header");
 
   if (pTopMv && header) {
     const pTopMvRect = pTopMv.getBoundingClientRect();
@@ -335,18 +314,13 @@ window.addEventListener('scroll', function () {
 
     if (pTopMvRect.bottom < headerRect.top) {
       // .p-top_mvが#headerを通過した場合
-      header.classList.add('glass_effect');
+      header.classList.add("glass_effect");
     } else {
       // .p-top_mvが#headerと重なっている場合、または上に戻った場合
-      header.classList.remove('glass_effect');
+      header.classList.remove("glass_effect");
     }
   }
 });
-
-
-
-
-
 
 // ***********アコーティオン開閉***********
 
@@ -382,7 +356,10 @@ const setUpAccordion = () => {
         element.classList.toggle(IS_OPENED_CLASS);
 
         // アニメーションを実行
-        const closingAnim = content.animate(closingAnimKeyframes(content), animTiming);
+        const closingAnim = content.animate(
+          closingAnimKeyframes(content),
+          animTiming
+        );
         // アニメーション実行中用の値を付与
         element.dataset.animStatus = RUNNING_VALUE;
 
@@ -402,7 +379,10 @@ const setUpAccordion = () => {
         element.classList.toggle(IS_OPENED_CLASS);
 
         // アニメーションを実行
-        const openingAnim = content.animate(openingAnimKeyframes(content), animTiming);
+        const openingAnim = content.animate(
+          openingAnimKeyframes(content),
+          animTiming
+        );
         // アニメーション実行中用の値を入れる
         element.dataset.animStatus = RUNNING_VALUE;
 
@@ -413,14 +393,14 @@ const setUpAccordion = () => {
       }
     });
   });
-}
+};
 
 /**
  * アニメーションの時間とイージング
  */
 const animTiming = {
   duration: 400,
-  easing: "ease-out"
+  easing: "ease-out",
 };
 
 /**
@@ -428,12 +408,13 @@ const animTiming = {
  */
 const closingAnimKeyframes = (content) => [
   {
-    height: content.offsetHeight + 'px', // height: "auto"だとうまく計算されないため要素の高さを指定する
+    height: content.offsetHeight + "px", // height: "auto"だとうまく計算されないため要素の高さを指定する
     opacity: 1,
-  }, {
+  },
+  {
     height: 0,
     opacity: 0,
-  }
+  },
 ];
 
 /**
@@ -443,24 +424,19 @@ const openingAnimKeyframes = (content) => [
   {
     height: 0,
     opacity: 0,
-  }, {
-    height: content.offsetHeight + 'px',
+  },
+  {
+    height: content.offsetHeight + "px",
     opacity: 1,
-  }
+  },
 ];
-
-
 
 // ***********ハンバーガーメニュー***********
 
-
 $(function () {
-  $('.ham-trigger').on('click', function () {
-    $(this).toggleClass('ham_active');
-    $('header').toggleClass('open_active');
+  $(".ham-trigger").on("click", function () {
+    $(this).toggleClass("ham_active");
+    $("header").toggleClass("open_active");
     return false;
   });
 });
-
-
-
