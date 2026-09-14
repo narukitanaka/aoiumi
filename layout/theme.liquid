@@ -178,7 +178,7 @@
     --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
     --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px; --text-boxes-radius: {{
     settings.text_boxes_radius }}px; --text-boxes-shadow-opacity: {{ settings.text_boxes_shadow_opacity | divided_by:
-    100.0 }}; --text-boxes-shadow-visible: {% if settings.text_boxes_shadow_opacity> 0 %}1{% else %}0{% endif %};
+    100.0 }}; --text-boxes-shadow-visible: {% if settings.text_boxes_shadow_opacity %}1{% else %}0{% endif %};
     --text-boxes-shadow-horizontal-offset: {{ settings.text_boxes_shadow_horizontal_offset }}px;
     --text-boxes-shadow-vertical-offset: {{ settings.text_boxes_shadow_vertical_offset }}px;
     --text-boxes-shadow-blur-radius: {{ settings.text_boxes_shadow_blur }}px;
@@ -500,4 +500,13 @@
 
 </body>
 
-</html>
+</html>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if settings.text_boxes_shadow_opacity> 0 %}"
+  to: "{% if settings.text_boxes_shadow_opacity %}"
+  position: 10842..10885
+{%- endcomment -%}
